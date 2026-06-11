@@ -375,10 +375,11 @@ main {
 }
 
 .hero .hero-logo {
-  width: auto;
+  display: block;
+  width: 100%;
+  max-width: 680px;
   height: auto;
-  max-width: min(420px, 100%);
-  margin-bottom: 1.25rem;
+  margin: 0 auto 1.25rem;
 }
 
 .hero h1 {
