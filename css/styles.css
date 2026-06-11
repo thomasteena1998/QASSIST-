@@ -4,25 +4,33 @@
    ========================================================================== */
 
 :root {
-  /* Colour palette — all text/background pairs meet WCAG AA */
-  --colour-ink: #1f2a33;          /* main text */
-  --colour-ink-soft: #46535c;     /* secondary text */
-  --colour-primary: #14525f;      /* deep teal — headings, header bar */
-  --colour-primary-dark: #0d3d47;
-  --colour-accent: #8a4a12;       /* warm accent for highlights */
+  /* Colour palette — "Option C, light blush", drawn from the Q-ASSIST logo.
+     All text/background pairs meet WCAG AA. */
+  --colour-ink: #443a40;          /* body text — soft charcoal */
+  --colour-ink-soft: #6b5e66;     /* secondary text (6.1:1 on white) */
+  --colour-heading: #b33063;      /* headings and nav text (6.0:1 on white) */
+  --colour-primary: #c0264c;      /* links and primary buttons (5.8:1 on white) */
+  --colour-primary-dark: #98203d; /* link/button hover */
+  --colour-accent: #2e9e84;       /* soft teal — secondary accent fills/borders */
+  --colour-accent-ink: #1f7a66;   /* darker teal for teal TEXT (5.2:1 on white) */
+  --colour-accent-soft: #e4f3ef;  /* pale teal tint */
+  --colour-decor: #f8854a;        /* soft orange — DECORATIVE ONLY (hover
+                                     underlines, thin dividers, icons on a
+                                     coloured band); never body text,
+                                     headings, or links */
   --colour-bg: #ffffff;
-  --colour-bg-soft: #f4f7f8;
-  --colour-border: #d4dce1;
-  --colour-focus: #b35c00;
+  --colour-bg-soft: #fceff2;      /* pale blush tint for section bands */
+  --colour-border: #ece2e6;       /* thin light borders and rules */
+  --colour-focus: #1f7a66;        /* focus outline (5.2:1 on white) */
 
-  /* Domain colours (used on roadmap + domain cards; AA against white text
-     where used as backgrounds) */
-  --domain-1: #14525f;
-  --domain-2: #5b3a8c;
-  --domain-3: #1f5e2e;
-  --domain-4: #8a4a12;
-  --domain-5: #84304f;
-  --domain-6: #3a4a87;
+  /* Domain colours — soft, mutually distinguishable set fitting the palette.
+     Decorative use only (card bars, dots, band markers); never carries text. */
+  --domain-1: #c0264c;            /* raspberry */
+  --domain-2: #f8854a;            /* soft orange */
+  --domain-3: #2e9e84;            /* soft teal */
+  --domain-4: #7c6fb0;            /* soft violet */
+  --domain-5: #4e86b8;            /* dusty blue */
+  --domain-6: #d9a03c;            /* golden */
 
   --font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
   --font-heading: "Lora", Georgia, "Times New Roman", serif;
@@ -67,7 +75,7 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
-  color: var(--colour-primary-dark);
+  color: var(--colour-heading);
   line-height: 1.25;
   margin: 0 0 0.6em;
 }
@@ -88,6 +96,7 @@ a {
 
 a:hover {
   color: var(--colour-primary-dark);
+  text-decoration-color: var(--colour-decor); /* decorative underline only */
 }
 
 img {
@@ -160,7 +169,7 @@ main {
 
 .site-header {
   background: var(--colour-bg);
-  border-bottom: 4px solid var(--colour-primary);
+  border-bottom: 3px solid var(--colour-decor); /* thin decorative divider */
 }
 
 .header-inner {
@@ -190,7 +199,7 @@ main {
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--colour-primary-dark);
+  color: var(--colour-heading);
 }
 
 /* Mobile menu toggle (hidden on wide screens) */
@@ -226,7 +235,8 @@ main {
   display: block;
   padding: 0.6em 0.85em;
   font-size: 1.05rem;
-  color: var(--colour-ink);
+  font-weight: 600;
+  color: var(--colour-heading);
   text-decoration: none;
   border-radius: 6px;
   background: none;
@@ -244,7 +254,7 @@ main {
 .site-nav a[aria-current="page"] {
   font-weight: 700;
   color: var(--colour-primary-dark);
-  box-shadow: inset 0 -3px 0 var(--colour-primary);
+  box-shadow: inset 0 -3px 0 var(--colour-decor);
 }
 
 /* Dropdown */
@@ -273,7 +283,7 @@ main {
   border: 1px solid var(--colour-border);
   border-top: 3px solid var(--colour-primary);
   border-radius: 0 0 8px 8px;
-  box-shadow: 0 8px 20px rgba(31, 42, 51, 0.15);
+  box-shadow: 0 8px 20px rgba(68, 58, 64, 0.15);
   padding: 0.4rem;
   margin: 0;
   list-style: none;
@@ -293,6 +303,7 @@ main {
   width: 100%;
   padding: 0.55em 0.75em;
   font-size: 1rem;
+  font-weight: 400;
   border-radius: 6px;
 }
 
@@ -335,12 +346,14 @@ main {
 
 .btn-secondary {
   background: #ffffff;
-  color: var(--colour-primary-dark);
+  color: var(--colour-accent-ink);
+  border-color: var(--colour-accent);
 }
 
 .btn-secondary:hover {
-  background: var(--colour-bg-soft);
-  color: var(--colour-primary-dark);
+  background: var(--colour-accent-soft);
+  border-color: var(--colour-accent-ink);
+  color: var(--colour-accent-ink);
 }
 
 .btn-row {
@@ -403,28 +416,30 @@ main {
   padding: 1.25rem;
   text-decoration: none;
   color: var(--colour-ink);
-  box-shadow: 0 2px 6px rgba(31, 42, 51, 0.08);
+  box-shadow: 0 2px 6px rgba(68, 58, 64, 0.08);
   height: 100%;
 }
 
 .domain-card:hover {
-  box-shadow: 0 6px 16px rgba(31, 42, 51, 0.18);
+  box-shadow: 0 6px 16px rgba(68, 58, 64, 0.18);
   color: var(--colour-ink);
 }
 
 .domain-card .domain-number {
+  /* Fixed accessible colour — the per-domain colour stays on the (decorative)
+     top bar, where no AA text contrast is required */
   font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--card-colour, var(--colour-primary));
+  color: var(--colour-ink-soft);
 }
 
 .domain-card .domain-title {
   font-family: var(--font-heading);
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--colour-primary-dark);
+  color: var(--colour-heading);
 }
 
 .domain-card .domain-link-hint {
@@ -483,19 +498,33 @@ main {
   background: var(--colour-bg);
 }
 
+/* Light, airy band: pale teal fill with dark text; the domain colour is
+   carried by a decorative top bar and dot (set via --group-colour) */
 .roadmap-group-header {
   display: block;
   padding: 0.6rem 0.85rem;
-  color: #ffffff;
+  background: var(--colour-accent-soft);
+  border-top: 4px solid var(--group-colour, var(--colour-accent));
+  color: var(--colour-ink);
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
 }
 
+.roadmap-group-header::before {
+  content: "";
+  display: inline-block;
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  margin-right: 0.45em;
+  background: var(--group-colour, var(--colour-accent));
+}
+
 a.roadmap-group-header:hover,
 a.roadmap-group-header:focus-visible {
   text-decoration: underline;
-  color: #ffffff;
+  color: var(--colour-primary-dark);
 }
 
 .roadmap-stages {
@@ -521,7 +550,7 @@ a.roadmap-group-header:focus-visible {
 .roadmap-stage .stage-number {
   flex-shrink: 0;
   font-weight: 700;
-  color: var(--colour-primary-dark);
+  color: var(--colour-heading);
   font-size: 0.9rem;
   border: 2px solid currentColor;
   border-radius: 50%;
@@ -542,7 +571,7 @@ a.roadmap-group-header:focus-visible {
 }
 
 .roadmap-crosscutting .roadmap-group-header {
-  background: var(--domain-6);
+  --group-colour: var(--domain-6);
 }
 
 .roadmap-crosscutting-body {
@@ -581,7 +610,7 @@ a.roadmap-group-header:focus-visible {
   border: 1px solid var(--colour-border);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(31, 42, 51, 0.08);
+  box-shadow: 0 2px 6px rgba(68, 58, 64, 0.08);
 }
 
 .team-card img {
@@ -628,7 +657,7 @@ a.roadmap-group-header:focus-visible {
 
 .resource-item {
   border: 1px solid var(--colour-border);
-  border-left: 6px solid var(--colour-primary);
+  border-left: 4px solid var(--colour-accent);
   border-radius: 8px;
   padding: 1rem 1.25rem;
   background: var(--colour-bg);
@@ -668,15 +697,16 @@ a.roadmap-group-header:focus-visible {
    -------------------------------------------------------------------------- */
 
 .site-footer {
-  background: var(--colour-primary-dark);
-  color: #e8eef0;
+  background: var(--colour-bg-soft);
+  border-top: 3px solid var(--colour-decor); /* thin decorative divider */
+  color: var(--colour-ink);
   margin-top: 3rem;
   padding: 2rem 0;
   font-size: 0.98rem;
 }
 
 .site-footer a {
-  color: #ffffff;
+  color: var(--colour-primary);
 }
 
 .site-footer p {
