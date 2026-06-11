@@ -191,7 +191,7 @@ main {
 }
 
 .brand img {
-  height: 56px;
+  height: 44px;
   width: auto;
 }
 
@@ -375,8 +375,9 @@ main {
 }
 
 .hero .hero-logo {
-  height: 96px;
   width: auto;
+  height: auto;
+  max-width: min(420px, 100%);
   margin-bottom: 1.25rem;
 }
 
