@@ -1,0 +1,731 @@
+/* ==========================================================================
+   Q-ASSIST shared stylesheet
+   Clean, calm, academic style. WCAG AA colour contrast throughout.
+   ========================================================================== */
+
+:root {
+  /* Colour palette — all text/background pairs meet WCAG AA */
+  --colour-ink: #1f2a33;          /* main text */
+  --colour-ink-soft: #46535c;     /* secondary text */
+  --colour-primary: #14525f;      /* deep teal — headings, header bar */
+  --colour-primary-dark: #0d3d47;
+  --colour-accent: #8a4a12;       /* warm accent for highlights */
+  --colour-bg: #ffffff;
+  --colour-bg-soft: #f4f7f8;
+  --colour-border: #d4dce1;
+  --colour-focus: #b35c00;
+
+  /* Domain colours (used on roadmap + domain cards; AA against white text
+     where used as backgrounds) */
+  --domain-1: #14525f;
+  --domain-2: #5b3a8c;
+  --domain-3: #1f5e2e;
+  --domain-4: #8a4a12;
+  --domain-5: #84304f;
+  --domain-6: #3a4a87;
+
+  --font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  --font-heading: "Lora", Georgia, "Times New Roman", serif;
+
+  --max-width: 70rem;
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.125rem;       /* 18px base for readability */
+  line-height: 1.65;
+  color: var(--colour-ink);
+  background-color: var(--colour-bg);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--colour-primary-dark);
+  line-height: 1.25;
+  margin: 0 0 0.6em;
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; margin-top: 1.5em; }
+h3 { font-size: 1.35rem; margin-top: 1.2em; }
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--colour-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--colour-primary-dark);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul, ol {
+  padding-left: 1.4em;
+}
+
+/* Visible focus indicator everywhere, for keyboard users */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--colour-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip link — first focusable element on every page */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--colour-primary-dark);
+  color: #ffffff;
+  padding: 0.6em 1em;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0;
+  color: #ffffff;
+}
+
+/* Shared layout container */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+main {
+  padding: 2rem 0 3rem;
+}
+
+/* Placeholder styling — makes every [PLACEHOLDER] block easy to spot */
+.placeholder {
+  background: #fdf6ec;
+  border: 2px dashed #c8a06a;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  color: #6b4a14;
+  font-style: italic;
+}
+
+.placeholder-inline {
+  background: #fdf6ec;
+  border: 1px dashed #c8a06a;
+  border-radius: 4px;
+  padding: 0 0.3em;
+  color: #6b4a14;
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Header and navigation
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  background: var(--colour-bg);
+  border-bottom: 4px solid var(--colour-primary);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.25rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.brand img {
+  height: 56px;
+  width: auto;
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--colour-primary-dark);
+}
+
+/* Mobile menu toggle (hidden on wide screens) */
+.menu-toggle {
+  display: none;
+  background: var(--colour-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55em 0.9em;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.menu-toggle:hover {
+  background: var(--colour-primary-dark);
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a,
+.site-nav .dropdown-toggle {
+  display: block;
+  padding: 0.6em 0.85em;
+  font-size: 1.05rem;
+  color: var(--colour-ink);
+  text-decoration: none;
+  border-radius: 6px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.site-nav a:hover,
+.site-nav .dropdown-toggle:hover {
+  background: var(--colour-bg-soft);
+  color: var(--colour-primary-dark);
+}
+
+.site-nav a[aria-current="page"] {
+  font-weight: 700;
+  color: var(--colour-primary-dark);
+  box-shadow: inset 0 -3px 0 var(--colour-primary);
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle .chevron {
+  display: inline-block;
+  margin-left: 0.35em;
+  transition: transform 0.15s ease;
+  font-size: 0.8em;
+}
+
+.dropdown.open .chevron {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 22rem;
+  background: var(--colour-bg);
+  border: 1px solid var(--colour-border);
+  border-top: 3px solid var(--colour-primary);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 8px 20px rgba(31, 42, 51, 0.15);
+  padding: 0.4rem;
+  margin: 0;
+  list-style: none;
+  z-index: 50;
+}
+
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  width: 100%;
+}
+
+.dropdown-menu a {
+  display: block;
+  width: 100%;
+  padding: 0.55em 0.75em;
+  font-size: 1rem;
+  border-radius: 6px;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus-visible {
+  background: var(--colour-bg-soft);
+}
+
+.dropdown-menu .domain-dot {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+  margin-right: 0.55em;
+  vertical-align: baseline;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-block;
+  background: var(--colour-primary);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.7em 1.4em;
+  border-radius: 8px;
+  border: 2px solid var(--colour-primary);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--colour-primary-dark);
+  border-color: var(--colour-primary-dark);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: var(--colour-primary-dark);
+}
+
+.btn-secondary:hover {
+  background: var(--colour-bg-soft);
+  color: var(--colour-primary-dark);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   Home page
+   -------------------------------------------------------------------------- */
+
+.hero {
+  background: var(--colour-bg-soft);
+  border-bottom: 1px solid var(--colour-border);
+  padding: 3rem 0 2.5rem;
+  text-align: center;
+}
+
+.hero .hero-logo {
+  height: 96px;
+  width: auto;
+  margin-bottom: 1.25rem;
+}
+
+.hero h1 {
+  margin-bottom: 0.4em;
+}
+
+.hero .tagline {
+  font-size: 1.15rem;
+  color: var(--colour-ink-soft);
+  max-width: 46rem;
+  margin: 0 auto 1em;
+}
+
+.hero .btn-row {
+  justify-content: center;
+}
+
+/* Domain grid (home page) */
+.domain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+}
+
+.domain-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: var(--colour-bg);
+  border: 1px solid var(--colour-border);
+  border-top: 6px solid var(--card-colour, var(--colour-primary));
+  border-radius: 10px;
+  padding: 1.25rem;
+  text-decoration: none;
+  color: var(--colour-ink);
+  box-shadow: 0 2px 6px rgba(31, 42, 51, 0.08);
+  height: 100%;
+}
+
+.domain-card:hover {
+  box-shadow: 0 6px 16px rgba(31, 42, 51, 0.18);
+  color: var(--colour-ink);
+}
+
+.domain-card .domain-number {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--card-colour, var(--colour-primary));
+}
+
+.domain-card .domain-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--colour-primary-dark);
+}
+
+.domain-card .domain-link-hint {
+  margin-top: auto;
+  font-size: 0.95rem;
+  color: var(--colour-ink-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Section / page basics
+   -------------------------------------------------------------------------- */
+
+.page-intro {
+  max-width: 48rem;
+}
+
+.phase-section,
+.domain-section {
+  border-top: 1px solid var(--colour-border);
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+  /* Keep anchored headings visible below any UI when jumped to */
+  scroll-margin-top: 1.5rem;
+}
+
+.domain-section h2 .domain-dot,
+.legend .domain-dot {
+  display: inline-block;
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  margin-right: 0.4em;
+}
+
+/* --------------------------------------------------------------------------
+   Roadmap (Guiding Principles page)
+   -------------------------------------------------------------------------- */
+
+.roadmap {
+  margin: 2rem 0;
+}
+
+.roadmap-track {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.roadmap-group {
+  border: 1px solid var(--colour-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--colour-bg);
+}
+
+.roadmap-group-header {
+  display: block;
+  padding: 0.6rem 0.85rem;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+a.roadmap-group-header:hover,
+a.roadmap-group-header:focus-visible {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+.roadmap-stages {
+  list-style: none;
+  padding: 0.75rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.roadmap-stage {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  background: var(--colour-bg-soft);
+  border: 1px solid var(--colour-border);
+  border-radius: 6px;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.98rem;
+}
+
+.roadmap-stage .stage-number {
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--colour-primary-dark);
+  font-size: 0.9rem;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  width: 1.7em;
+  height: 1.7em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+/* Cross-cutting System Enablers band */
+.roadmap-crosscutting {
+  margin-top: 1rem;
+  border: 1px solid var(--colour-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.roadmap-crosscutting .roadmap-group-header {
+  background: var(--domain-6);
+}
+
+.roadmap-crosscutting-body {
+  padding: 0.75rem 0.85rem;
+  background: var(--colour-bg-soft);
+  font-size: 0.98rem;
+}
+
+/* Roadmap legend */
+.legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 0;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  color: var(--colour-ink-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Team page
+   -------------------------------------------------------------------------- */
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.team-card {
+  background: var(--colour-bg);
+  border: 1px solid var(--colour-border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(31, 42, 51, 0.08);
+}
+
+.team-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.team-card-body {
+  padding: 1rem 1.1rem 1.2rem;
+}
+
+.team-card h3 {
+  margin: 0 0 0.2em;
+  font-size: 1.15rem;
+}
+
+.team-card .role {
+  font-weight: 600;
+  color: var(--colour-ink-soft);
+  font-size: 0.98rem;
+  margin-bottom: 0.6em;
+}
+
+.team-card .bio {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Resources page
+   -------------------------------------------------------------------------- */
+
+.resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.resource-item {
+  border: 1px solid var(--colour-border);
+  border-left: 6px solid var(--colour-primary);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  background: var(--colour-bg);
+}
+
+.resource-item h3 {
+  margin: 0 0 0.3em;
+  font-size: 1.15rem;
+}
+
+.resource-item p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Contact page
+   -------------------------------------------------------------------------- */
+
+.contact-panel {
+  background: var(--colour-bg-soft);
+  border: 1px solid var(--colour-border);
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 40rem;
+  margin-top: 1.5rem;
+}
+
+.contact-email {
+  font-size: 1.2rem;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  background: var(--colour-primary-dark);
+  color: #e8eef0;
+  margin-top: 3rem;
+  padding: 2rem 0;
+  font-size: 0.98rem;
+}
+
+.site-footer a {
+  color: #ffffff;
+}
+
+.site-footer p {
+  margin: 0 0 0.4em;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — mobile navigation
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 860px) {
+  .menu-toggle {
+    display: inline-block;
+  }
+
+  .site-nav {
+    display: none;
+    width: 100%;
+  }
+
+  .site-nav.open {
+    display: block;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem 0 0.75rem;
+  }
+
+  .site-nav a,
+  .site-nav .dropdown-toggle {
+    width: 100%;
+    text-align: left;
+  }
+
+  .dropdown-menu {
+    position: static;
+    min-width: 0;
+    box-shadow: none;
+    border: none;
+    border-left: 3px solid var(--colour-primary);
+    border-radius: 0;
+    margin-left: 0.75rem;
+  }
+
+  .hero {
+    padding: 2rem 0;
+  }
+
+  h1 { font-size: 1.85rem; }
+  h2 { font-size: 1.5rem; }
+}
