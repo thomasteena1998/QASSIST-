@@ -23,14 +23,14 @@
   --colour-border: #ece2e6;       /* thin light borders and rules */
   --colour-focus: #1f7a66;        /* focus outline (5.2:1 on white) */
 
-  /* Domain colours — soft, mutually distinguishable set fitting the palette.
-     Decorative use only (card bars, dots, band markers); never carries text. */
-  --domain-1: #c0264c;            /* raspberry */
-  --domain-2: #f8854a;            /* soft orange */
-  --domain-3: #2e9e84;            /* soft teal */
-  --domain-4: #7c6fb0;            /* soft violet */
-  --domain-5: #4e86b8;            /* dusty blue */
-  --domain-6: #d9a03c;            /* golden */
+  /* Domain colours — exact roadmap colours; decorative use only
+     (card bars, dots, marker fills); supporting text always sits nearby. */
+  --domain-1: #c0264c;            /* Designing and embedding Inclusion Early */
+  --domain-2: #e27a2c;            /* Building Relationships with Communities ... */
+  --domain-3: #2e9e84;            /* Equipping Trial Teams to Deliver Inclusive Trials */
+  --domain-4: #6e5fc8;            /* Ensuring Trial Outcomes and Findings ... */
+  --domain-5: #2f7fd0;            /* Extending Inclusion Beyond the Trial */
+  --domain-6: #e1972a;            /* System Enablers (cross-cutting) */
 
   --font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
   --font-heading: "Lora", Georgia, "Times New Roman", serif;
@@ -466,8 +466,7 @@ main {
   scroll-margin-top: 1.5rem;
 }
 
-h1 .domain-dot,
-.legend .domain-dot {
+h1 .domain-dot {
   display: inline-block;
   width: 0.65em;
   height: 0.65em;
@@ -518,120 +517,105 @@ h1 .domain-dot,
 }
 
 /* --------------------------------------------------------------------------
-   Roadmap (Guiding Principles page)
+   Roadmap (Guiding Principles overview page)
    -------------------------------------------------------------------------- */
 
 .roadmap {
   margin: 2rem 0;
 }
 
-.roadmap-track {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  gap: 1rem;
-  padding: 0;
-  margin: 1rem 0;
+/* Road graphic on the left, domain key panel on the right; the key wraps
+   below the road on narrow screens */
+.roadmap-figure {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
 }
 
-.roadmap-group {
+.roadmap-road {
+  flex: 1 1 26rem;
+  min-width: 18rem;
+  max-width: 44rem;
+}
+
+.roadmap-road svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.stage-label {
+  font-family: var(--font-body);
+  font-size: 17px;
+  fill: var(--colour-ink);
+}
+
+.stage-number-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  fill: #ffffff;
+  /* subtle dark edge keeps white digits legible on the lighter
+     marker colours without changing the exact fills */
+  paint-order: stroke;
+  stroke: rgba(0, 0, 0, 0.35);
+  stroke-width: 1.5px;
+}
+
+.stage-link circle {
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.stage-link:hover circle,
+.stage-link:focus circle,
+.stage-link:focus-visible circle {
+  stroke: var(--colour-focus);
+  stroke-width: 3;
+}
+
+/* Domain key panel */
+.roadmap-legend {
+  flex: 1 1 19rem;
+  max-width: 28rem;
+  align-self: center;
+  background: var(--colour-bg);
   border: 1px solid var(--colour-border);
   border-radius: 10px;
-  overflow: hidden;
-  background: var(--colour-bg);
+  padding: 1.25rem 1.5rem;
 }
 
-/* Light, airy band: pale teal fill with dark text; the domain colour is
-   carried by a decorative top bar and dot (set via --group-colour) */
-.roadmap-group-header {
-  display: block;
-  padding: 0.6rem 0.85rem;
-  background: var(--colour-accent-soft);
-  border-top: 4px solid var(--group-colour, var(--colour-accent));
-  color: var(--colour-ink);
-  font-weight: 700;
-  font-size: 0.95rem;
-  text-decoration: none;
+.roadmap-legend h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
 }
 
-.roadmap-group-header::before {
-  content: "";
-  display: inline-block;
-  width: 0.65em;
-  height: 0.65em;
-  border-radius: 50%;
-  margin-right: 0.45em;
-  background: var(--group-colour, var(--colour-accent));
-}
-
-a.roadmap-group-header:hover,
-a.roadmap-group-header:focus-visible {
-  text-decoration: underline;
-  color: var(--colour-primary-dark);
-}
-
-.roadmap-stages {
+.legend-list {
   list-style: none;
-  padding: 0.75rem;
   margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.8rem;
+  font-size: 1rem;
 }
 
-.roadmap-stage {
+.legend-list li {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 0.6rem;
-  background: var(--colour-bg-soft);
-  border: 1px solid var(--colour-border);
-  border-radius: 6px;
-  padding: 0.5rem 0.65rem;
-  font-size: 0.98rem;
 }
 
-.roadmap-stage .stage-number {
+.legend-swatch {
   flex-shrink: 0;
-  font-weight: 700;
-  color: var(--colour-heading);
-  font-size: 0.9rem;
-  border: 2px solid currentColor;
+  width: 0.85em;
+  height: 0.85em;
   border-radius: 50%;
-  width: 1.7em;
-  height: 1.7em;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
+  margin-top: 0.35em;
 }
 
-/* Cross-cutting System Enablers band */
-.roadmap-crosscutting {
-  margin-top: 1rem;
-  border: 1px solid var(--colour-border);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.roadmap-crosscutting .roadmap-group-header {
-  --group-colour: var(--domain-6);
-}
-
-.roadmap-crosscutting-body {
-  padding: 0.75rem 0.85rem;
-  background: var(--colour-bg-soft);
-  font-size: 0.98rem;
-}
-
-/* Roadmap legend */
-.legend {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
-  padding: 0;
-  margin: 1rem 0;
-  font-size: 0.95rem;
+.legend-note {
   color: var(--colour-ink-soft);
 }
 
