@@ -262,6 +262,24 @@ main {
   position: relative;
 }
 
+/* Split control: the label is a normal link to the overview page; the
+   chevron button beside it toggles the dropdown */
+.dropdown-label {
+  display: flex;
+  align-items: stretch;
+}
+
+.dropdown-label > a {
+  padding-right: 0.3em;
+  border-radius: 6px 0 0 6px;
+}
+
+.dropdown-label .dropdown-toggle {
+  padding-left: 0.3em;
+  padding-right: 0.6em;
+  border-radius: 0 6px 6px 0;
+}
+
 .dropdown-toggle .chevron {
   display: inline-block;
   margin-left: 0.35em;
@@ -769,6 +787,18 @@ h1 .domain-dot {
   .site-nav .dropdown-toggle {
     width: 100%;
     text-align: left;
+  }
+
+  /* Keep the split Guiding Principles control on one row in the mobile
+     menu: link grows, chevron button stays compact */
+  .site-nav .dropdown-label > a {
+    width: auto;
+    flex: 1;
+  }
+
+  .site-nav .dropdown-label .dropdown-toggle {
+    width: auto;
+    flex: 0 0 auto;
   }
 
   .dropdown-menu {
