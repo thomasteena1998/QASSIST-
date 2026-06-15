@@ -423,41 +423,53 @@ main {
   margin-top: 1.25rem;
 }
 
-/* Highlight cards: coloured left-edge accent plus a light tinted
-   background. Per-card accent/tint set by the variant classes below. */
-.pub-card {
-  background: var(--card-tint, var(--colour-accent-soft));
+/* Home call-to-action card row: three equal-height cards side by side,
+   stacking on mobile. Accent colour per card via --card-accent. */
+.cta-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.cta-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--colour-bg);
   border: 1px solid var(--colour-border);
-  border-left: 6px solid var(--card-accent, var(--colour-accent));
   border-radius: 10px;
-  padding: 1.25rem 1.5rem;
+  padding: 1.5rem;
 }
 
-.pub-card-study {
-  --card-accent: #b33063;
-  --card-tint: #fceff2;
+.cta-icon {
+  color: var(--card-accent, var(--colour-accent));
+  line-height: 0;
 }
 
-.pub-card-principles {
-  --card-accent: #6e5fc8;
-  --card-tint: #f1eefa;
+.cta-heading {
+  margin: 0.75rem 0 0;
+  font-size: 1.2rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 3px solid var(--card-accent, var(--colour-accent));
+  align-self: flex-start;
 }
 
-.pub-card-publication {
-  --card-accent: #2e9e84;
-  --card-tint: #eaf6f1;
+.cta-card p {
+  margin: 1rem 0 0;
 }
 
-.pub-card p {
-  margin-bottom: 0.75em;
+/* Push the button to the bottom so all three align across the row */
+.cta-action {
+  margin-top: auto;
+  padding-top: 1.25rem;
 }
 
-.pub-card p:last-child {
-  margin-bottom: 0;
-}
-
-.pub-card-link {
-  font-weight: 600;
+@media (max-width: 760px) {
+  .cta-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Domain grid (home page) */
