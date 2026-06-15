@@ -400,19 +400,26 @@ main {
   margin: 0 auto 1.25rem;
 }
 
-/* Readable left-aligned text column under the centred logo */
-.hero-text {
-  max-width: 52rem;
+.hero h1 {
+  max-width: 36rem;
   margin: 0 auto;
-  text-align: left;
 }
 
-.hero-text h1 {
-  margin-bottom: 0.5em;
+/* Single-column home flow with generous vertical rhythm */
+.home-flow {
+  max-width: 52rem;
 }
 
-.hero .btn-row {
-  margin-top: 1.5rem;
+.home-section {
+  margin: 3.5rem auto 0;
+}
+
+.home-section:first-child {
+  margin-top: 3rem;
+}
+
+.home-section .btn-row {
+  margin-top: 1.25rem;
 }
 
 /* Key publication highlight card */
