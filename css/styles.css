@@ -388,7 +388,7 @@ main {
 .hero {
   background: var(--colour-bg-soft);
   border-bottom: 1px solid var(--colour-border);
-  padding: 3rem 0 2.5rem;
+  padding: 3rem 0 2rem;
   text-align: center;
 }
 
@@ -397,7 +397,7 @@ main {
   width: 100%;
   max-width: 680px;
   height: auto;
-  margin: 0 auto 1.25rem;
+  margin: 0 auto 2rem;
 }
 
 .hero h1 {
@@ -414,30 +414,42 @@ main {
   margin: 3.5rem auto 0;
 }
 
+/* Clear gap between the blush hero and the first section */
 .home-section:first-child {
-  margin-top: 3rem;
+  margin-top: 4rem;
 }
 
 .home-section .btn-row {
   margin-top: 1.25rem;
 }
 
-/* Key publication highlight card */
+/* Highlight cards: coloured left-edge accent plus a light tinted
+   background. Per-card accent/tint set by the variant classes below. */
 .pub-card {
-  background: var(--colour-accent-soft);
+  background: var(--card-tint, var(--colour-accent-soft));
   border: 1px solid var(--colour-border);
-  border-left: 6px solid var(--colour-accent);
+  border-left: 6px solid var(--card-accent, var(--colour-accent));
   border-radius: 10px;
   padding: 1.25rem 1.5rem;
 }
 
-.pub-card-title {
-  margin-top: 0;
-  font-size: 1.2rem;
+.pub-card-study {
+  --card-accent: #b33063;
+  --card-tint: #fceff2;
+}
+
+.pub-card-principles {
+  --card-accent: #6e5fc8;
+  --card-tint: #f1eefa;
+}
+
+.pub-card-publication {
+  --card-accent: #2e9e84;
+  --card-tint: #eaf6f1;
 }
 
 .pub-card p {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.75em;
 }
 
 .pub-card p:last-child {
