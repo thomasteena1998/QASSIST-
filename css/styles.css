@@ -400,19 +400,45 @@ main {
   margin: 0 auto 1.25rem;
 }
 
-.hero h1 {
-  margin-bottom: 0.4em;
+/* Readable left-aligned text column under the centred logo */
+.hero-text {
+  max-width: 52rem;
+  margin: 0 auto;
+  text-align: left;
 }
 
-.hero .tagline {
-  font-size: 1.15rem;
-  color: var(--colour-ink-soft);
-  max-width: 46rem;
-  margin: 0 auto 1em;
+.hero-text h1 {
+  margin-bottom: 0.5em;
 }
 
 .hero .btn-row {
-  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+/* Key publication highlight card */
+.pub-card {
+  background: var(--colour-accent-soft);
+  border: 1px solid var(--colour-border);
+  border-left: 6px solid var(--colour-accent);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+}
+
+.pub-card-title {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.pub-card p {
+  margin-bottom: 0.5em;
+}
+
+.pub-card p:last-child {
+  margin-bottom: 0;
+}
+
+.pub-card-link {
+  font-weight: 600;
 }
 
 /* Domain grid (home page) */
@@ -756,6 +782,31 @@ h1 .domain-dot {
 
 .site-footer p {
   margin: 0 0 0.4em;
+}
+
+.footer-funding {
+  margin-top: 1rem;
+  max-width: 60rem;
+}
+
+/* Light strip so the partner logos sit cleanly whatever their own
+   backgrounds are */
+.footer-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  border: 1px solid var(--colour-border);
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.footer-logos img {
+  height: 60px;
+  width: auto;
 }
 
 /* --------------------------------------------------------------------------
