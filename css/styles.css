@@ -498,6 +498,10 @@ main {
     grid-template-columns: 1fr;
   }
 
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
   .footer-main {
     grid-template-columns: 1fr 1fr;
   }
@@ -814,65 +818,66 @@ h1 .domain-dot {
    Contact page
    -------------------------------------------------------------------------- */
 
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
 .contact-panel {
   background: var(--colour-bg-soft);
   border: 1px solid var(--colour-border);
   border-radius: 10px;
-  padding: 2rem 2.25rem;
-  max-width: 40rem;
-  margin-top: 1.5rem;
+  padding: 2rem 2rem;
 }
 
 .contact-panel h2 {
   font-size: 1.25rem;
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.5rem;
   color: var(--colour-heading);
 }
 
-.contact-line {
+.contact-row {
   display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 1.1rem;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
 }
 
-.contact-line svg {
+.contact-row:last-child {
+  margin-bottom: 0;
+}
+
+.contact-icon-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  color: var(--colour-primary);
-  margin-top: 0.15rem;
+  width: 42px;
+  height: 42px;
+  background: var(--colour-accent-soft);
+  border-radius: 8px;
+  color: var(--colour-accent-ink);
 }
 
 .contact-label {
   display: block;
-  font-weight: 600;
-  font-size: 0.88rem;
-  color: var(--colour-ink-soft);
-  margin-bottom: 0.15rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--colour-ink);
+  margin-bottom: 0.1rem;
 }
 
-.contact-line a {
+.contact-value {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--colour-ink-soft);
+}
+
+.contact-value a {
   color: var(--colour-primary);
   word-break: break-all;
-}
-
-.contact-network {
-  margin-top: 1.25rem;
-}
-
-.contact-network ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.contact-network li {
-  margin-bottom: 0.5rem;
-}
-
-.contact-network a {
-  color: var(--colour-primary);
 }
 
 /* --------------------------------------------------------------------------
@@ -948,9 +953,9 @@ h1 .domain-dot {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1.25rem;
   margin-top: 1rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.6rem 0.85rem;
   background: #ffffff;
   border-radius: 6px;
   width: fit-content;
