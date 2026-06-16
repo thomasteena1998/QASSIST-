@@ -818,15 +818,61 @@ h1 .domain-dot {
   background: var(--colour-bg-soft);
   border: 1px solid var(--colour-border);
   border-radius: 10px;
-  padding: 2rem;
+  padding: 2rem 2.25rem;
   max-width: 40rem;
   margin-top: 1.5rem;
 }
 
-.contact-email {
-  font-size: 1.2rem;
+.contact-panel h2 {
+  font-size: 1.25rem;
+  margin: 0 0 1.25rem;
+  color: var(--colour-heading);
+}
+
+.contact-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.contact-line svg {
+  flex-shrink: 0;
+  color: var(--colour-primary);
+  margin-top: 0.15rem;
+}
+
+.contact-label {
+  display: block;
   font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--colour-ink-soft);
+  margin-bottom: 0.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.contact-line a {
+  color: var(--colour-primary);
   word-break: break-all;
+}
+
+.contact-network {
+  margin-top: 1.25rem;
+}
+
+.contact-network ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-network li {
+  margin-bottom: 0.5rem;
+}
+
+.contact-network a {
+  color: var(--colour-primary);
 }
 
 /* --------------------------------------------------------------------------
