@@ -388,7 +388,7 @@ main {
 .hero {
   background: var(--colour-bg-soft);
   border-bottom: 1px solid var(--colour-border);
-  padding: 3rem 0 2rem;
+  padding: 2.5rem 0;
   text-align: center;
 }
 
@@ -397,12 +397,20 @@ main {
   width: 100%;
   max-width: 680px;
   height: auto;
-  margin: 0 auto 3rem;
+  margin: 0 auto;
 }
 
-.hero h1 {
-  max-width: 48rem;
-  margin: 0 auto;
+/* Visible only to screen readers (keeps a single h1 on the page) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Single-column home flow with generous vertical rhythm */
