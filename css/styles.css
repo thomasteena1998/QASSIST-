@@ -497,6 +497,14 @@ main {
   .cta-cards {
     grid-template-columns: 1fr;
   }
+
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-brand-col {
+    grid-column: 1 / -1;
+  }
 }
 
 /* Domain grid (home page) */
@@ -826,45 +834,139 @@ h1 .domain-dot {
    -------------------------------------------------------------------------- */
 
 .site-footer {
-  background: var(--colour-bg-soft);
-  border-top: 3px solid var(--colour-decor); /* thin decorative divider */
-  color: var(--colour-ink);
+  background: #4A1528;
+  color: #f0dce3;
   margin-top: 3rem;
-  padding: 2rem 0;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .site-footer a {
-  color: var(--colour-primary);
+  color: #f0dce3;
+  text-decoration: none;
 }
 
-.site-footer p {
-  margin: 0 0 0.4em;
+.site-footer a:hover,
+.site-footer a:focus {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+  padding: 3rem 0 2.5rem;
+}
+
+.footer-brand a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.footer-brand .brand-name {
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.footer-brand img {
+  height: 40px;
+  width: auto;
+}
+
+.footer-affiliation {
+  margin: 0.6rem 0 0;
+  font-size: 0.92rem;
+  color: #d4b6c2;
+}
+
+.footer-tagline {
+  margin: 0.75rem 0 0;
+  font-style: italic;
+  color: #d4b6c2;
+  font-size: 0.92rem;
 }
 
 .footer-funding {
-  margin-top: 1rem;
-  max-width: 60rem;
+  margin: 1rem 0 0;
+  font-size: 0.88rem;
+  color: #d4b6c2;
+  max-width: 28rem;
 }
 
-/* Light strip so the partner logos sit cleanly whatever their own
-   backgrounds are */
 .footer-logos {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.2rem;
   margin-top: 1rem;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   background: #ffffff;
-  border: 1px solid var(--colour-border);
-  border-radius: 8px;
+  border-radius: 6px;
   width: fit-content;
 }
 
 .footer-logos img {
-  height: 60px;
+  height: 46px;
   width: auto;
+}
+
+.footer-col h3 {
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li {
+  margin-bottom: 0.45rem;
+}
+
+.footer-col li a {
+  font-size: 0.93rem;
+}
+
+.footer-contact-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.93rem;
+}
+
+.footer-contact-line svg {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #d4b6c2;
+}
+
+.footer-bottom a {
+  color: #d4b6c2;
+}
+
+.footer-bottom a:hover,
+.footer-bottom a:focus {
+  color: #ffffff;
 }
 
 /* --------------------------------------------------------------------------
@@ -926,4 +1028,16 @@ h1 .domain-dot {
 
   h1 { font-size: 1.85rem; }
   h2 { font-size: 1.5rem; }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 0 1.5rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: center;
+  }
 }
