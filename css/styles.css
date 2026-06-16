@@ -144,6 +144,10 @@ main {
   padding: 2rem 0 3rem;
 }
 
+main.container {
+  padding-top: 2.5rem;
+}
+
 /* Placeholder styling — makes every [PLACEHOLDER] block easy to spot */
 .placeholder {
   background: #fdf6ec;
@@ -951,13 +955,13 @@ h1 .domain-dot {
 
 .footer-logos {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
   gap: 0.875rem;
   margin-top: 1rem;
 }
 
 .footer-logo-panel {
+  width: 180px;
   background: #ffffff;
   border-radius: 6px;
   padding: 0.5rem 0.85rem;
@@ -967,8 +971,10 @@ h1 .domain-dot {
 }
 
 .footer-logo-panel img {
-  height: 50px;
+  max-height: 50px;
+  max-width: 100%;
   width: auto;
+  height: auto;
   display: block;
 }
 
