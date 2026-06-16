@@ -431,14 +431,18 @@ main {
   margin-top: 1.25rem;
 }
 
-/* Lead statement: stands out by size and colour, not weight.
-   #B33063 on white is ~6:1, comfortably above AA. */
-.lead-statement {
-  font-size: 1.25rem;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #b33063;
+/* Lead/callout box for the key study statement: tinted background with
+   an accent left bar, normal body text inside. */
+.callout-box {
+  background: #fceff2;
+  border-left: 4px solid #b33063;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
   margin: 1.75rem 0;
+}
+
+.callout-box p {
+  margin: 0;
 }
 
 /* Home call-to-action card row: three equal-height cards side by side,
@@ -486,7 +490,7 @@ main {
 .cta-card .cta-action {
   margin-top: auto;
   padding-top: 1.25rem;
-  text-align: center;
+  align-self: flex-start;
 }
 
 @media (max-width: 760px) {
