@@ -470,8 +470,10 @@ main {
   margin: 1rem 0 0;
 }
 
-/* Push the button to the bottom so all three align across the row */
-.cta-action {
+/* Push the button to the bottom so all three align across the row.
+   Scoped to .cta-card so it outranks the `.cta-card p` margin rule
+   above (otherwise that rule's margin-top would override this auto). */
+.cta-card .cta-action {
   margin-top: auto;
   padding-top: 1.25rem;
 }
