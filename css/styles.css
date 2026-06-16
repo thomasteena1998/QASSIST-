@@ -439,12 +439,14 @@ main {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
   gap: 1.5rem;
 }
 
 .cta-card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   background: var(--colour-bg);
   border: 1px solid var(--colour-border);
   border-radius: 10px;
