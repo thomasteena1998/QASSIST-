@@ -819,6 +819,134 @@ h1 .domain-dot {
 }
 
 /* --------------------------------------------------------------------------
+   About page — key numbers + timeline
+   -------------------------------------------------------------------------- */
+
+.key-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 2.5rem;
+}
+
+.key-number {
+  text-align: center;
+  background: var(--colour-bg-soft);
+  border: 1px solid var(--colour-border);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  min-width: 8rem;
+}
+
+.key-number-value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #B33063;
+  line-height: 1.1;
+}
+
+.key-number-label {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--colour-ink-soft);
+  margin-top: 0.25rem;
+}
+
+.study-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 2.5rem;
+  position: relative;
+}
+
+.study-timeline::before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--colour-border);
+}
+
+.tl-step {
+  display: flex;
+  gap: 1.25rem;
+  padding-bottom: 2rem;
+  position: relative;
+}
+
+.tl-step:last-child {
+  padding-bottom: 0;
+}
+
+.tl-badge {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #B33063;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.tl-step--upcoming .tl-badge {
+  background: #ffffff;
+  color: #B33063;
+  border: 2px solid #B33063;
+}
+
+.tl-body {
+  flex: 1;
+  padding-top: 0.35rem;
+}
+
+.tl-title {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  color: var(--colour-heading);
+}
+
+.tl-body p {
+  margin: 0 0 0.6rem;
+}
+
+.tl-body p:last-child {
+  margin-bottom: 0;
+}
+
+.tl-found {
+  color: #B33063;
+}
+
+.tl-pill {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--colour-accent-soft);
+  color: var(--colour-accent-ink);
+  padding: 0.15em 0.6em;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+}
+
+/* --------------------------------------------------------------------------
    Contact page
    -------------------------------------------------------------------------- */
 
@@ -1091,6 +1219,15 @@ h1 .domain-dot {
 
   h1 { font-size: 1.85rem; }
   h2 { font-size: 1.5rem; }
+
+  .key-number {
+    min-width: 7rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .key-number-value {
+    font-size: 2rem;
+  }
 
   .footer-main {
     grid-template-columns: 1fr;
