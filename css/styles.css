@@ -688,6 +688,9 @@ h1 .domain-dot {
 .stage-link circle {
   stroke: #ffffff;
   stroke-width: 2;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  transform-origin: center;
+  transform-box: fill-box;
 }
 
 .stage-link:hover circle,
@@ -695,6 +698,51 @@ h1 .domain-dot {
 .stage-link:focus-visible circle {
   stroke: var(--colour-focus);
   stroke-width: 3;
+  transform: scale(1.2) translateY(-2px);
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+}
+
+.stage-link:hover text,
+.stage-link:focus text,
+.stage-link:focus-visible text {
+  transition: transform 0.25s ease;
+  transform-origin: center;
+  transform-box: fill-box;
+  transform: scale(1.2) translateY(-2px);
+}
+
+.stage-link.marker-hidden circle,
+.stage-link.marker-hidden text {
+  opacity: 0;
+}
+
+.stage-link.marker-visible circle,
+.stage-link.marker-visible text {
+  opacity: 1;
+  transition: opacity 0.4s ease, transform 0.25s ease, filter 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-link.marker-hidden circle,
+  .stage-link.marker-hidden text {
+    opacity: 1;
+  }
+  .stage-link.marker-visible circle,
+  .stage-link.marker-visible text {
+    transition: none;
+  }
+  .stage-link circle,
+  .stage-link:hover circle,
+  .stage-link:focus circle {
+    transition: none;
+    transform: none;
+    filter: none;
+  }
+  .stage-link:hover text,
+  .stage-link:focus text {
+    transition: none;
+    transform: none;
+  }
 }
 
 /* Domain key panel */

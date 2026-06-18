@@ -117,6 +117,37 @@
     });
   }
 
+  /* ----- Roadmap marker scroll reveal ----- */
+
+  var markers = document.querySelectorAll(".stage-link");
+
+  if (markers.length && !prefersReduced && "IntersectionObserver" in window) {
+    markers.forEach(function (m) {
+      m.classList.add("marker-hidden");
+    });
+
+    var roadmap = document.querySelector(".roadmap-road");
+    if (roadmap) {
+      var markerObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              markers.forEach(function (m, i) {
+                setTimeout(function () {
+                  m.classList.remove("marker-hidden");
+                  m.classList.add("marker-visible");
+                }, i * 120);
+              });
+              markerObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      markerObserver.observe(roadmap);
+    }
+  }
+
   /* ----- Mobile menu toggle ----- */
 
   var menuToggle = document.querySelector(".menu-toggle");
