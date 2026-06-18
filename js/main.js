@@ -89,6 +89,34 @@
     });
   }
 
+  /* ----- Timeline scroll reveal ----- */
+
+  var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var steps = document.querySelectorAll(".tl-step");
+
+  if (steps.length && !prefersReduced && "IntersectionObserver" in window) {
+    steps.forEach(function (step) {
+      step.classList.add("tl-hidden");
+    });
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("tl-hidden");
+            entry.target.classList.add("tl-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    steps.forEach(function (step) {
+      observer.observe(step);
+    });
+  }
+
   /* ----- Mobile menu toggle ----- */
 
   var menuToggle = document.querySelector(".menu-toggle");
