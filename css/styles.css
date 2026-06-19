@@ -1328,6 +1328,10 @@ h1 .domain-dot {
     margin-left: 0.75rem;
   }
 
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
   .hero {
     padding: 2rem 0;
   }
