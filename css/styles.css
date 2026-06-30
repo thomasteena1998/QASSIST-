@@ -817,6 +817,7 @@ h1 .domain-dot {
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(68, 58, 64, 0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
 }
 
 .team-card:hover {
@@ -827,10 +828,11 @@ h1 .domain-dot {
 .team-card img {
   width: 100%;
   aspect-ratio: 4 / 5;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
   border-bottom: 1px solid var(--colour-border);
+  background: var(--colour-bg-soft);
 }
 
 .team-card-body {
@@ -846,68 +848,121 @@ h1 .domain-dot {
   font-weight: 600;
   color: var(--colour-ink-soft);
   font-size: 0.98rem;
-  margin-bottom: 0.6em;
-}
-
-.bio-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3em;
-  background: none;
-  border: 1px solid var(--colour-border);
-  border-radius: 6px;
-  padding: 0.35em 0.75em;
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--colour-primary);
-  cursor: pointer;
-  margin-top: 0.5rem;
-}
-
-.bio-toggle:hover {
-  background: var(--colour-bg-soft);
-  border-color: var(--colour-primary);
-}
-
-.bio-toggle-icon {
-  font-size: 1.1em;
-  line-height: 1;
-  transition: transform 0.2s ease;
-}
-
-.bio-toggle[aria-expanded="true"] .bio-toggle-icon {
-  transform: rotate(45deg);
+  margin-bottom: 0;
 }
 
 .team-card .bio {
   font-size: 0.95rem;
-  margin: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease, opacity 0.35s ease, margin 0.35s ease;
-}
-
-.team-card .bio.bio-hidden {
-  max-height: 0;
-  opacity: 0;
-  margin: 0;
-}
-
-.team-card .bio.bio-visible {
-  max-height: 40rem;
-  opacity: 1;
-  margin-top: 0.75rem;
+  margin: 0.6em 0 0;
 }
 
 .team-card .bio p {
   margin: 0;
 }
 
+.js-bio-popup .team-card .bio {
+  display: none;
+}
+
+/* ----- Team popup overlay ----- */
+
+.team-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(68, 58, 64, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.team-popup-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.team-popup {
+  position: relative;
+  background: var(--colour-bg);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(68, 58, 64, 0.25);
+  max-width: 32rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem 2rem 2.5rem;
+  transform: translateY(16px);
+  transition: transform 0.25s ease;
+}
+
+.team-popup-overlay.open .team-popup {
+  transform: translateY(0);
+}
+
+.team-popup-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--colour-ink-soft);
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.team-popup-close:hover {
+  background: var(--colour-bg-soft);
+  color: var(--colour-heading);
+}
+
+.team-popup-photo {
+  width: 100%;
+  max-height: 20rem;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  border-radius: 8px;
+  background: var(--colour-bg-soft);
+  margin-bottom: 1.25rem;
+}
+
+.team-popup-name {
+  margin: 0 0 0.2em;
+  font-size: 1.3rem;
+}
+
+.team-popup-role {
+  font-weight: 600;
+  color: var(--colour-ink-soft);
+  font-size: 0.98rem;
+  margin: 0 0 1rem;
+}
+
+.team-popup-bio {
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.team-popup-bio p {
+  margin: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .team-card .bio {
+  .team-popup-overlay {
     transition: none;
   }
-  .bio-toggle-icon {
+  .team-popup {
     transition: none;
   }
 }
