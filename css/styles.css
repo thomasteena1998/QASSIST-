@@ -826,8 +826,9 @@ h1 .domain-dot {
 
 .team-card img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center;
   display: block;
   border-bottom: 1px solid var(--colour-border);
 }
@@ -848,9 +849,67 @@ h1 .domain-dot {
   margin-bottom: 0.6em;
 }
 
+.bio-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  background: none;
+  border: 1px solid var(--colour-border);
+  border-radius: 6px;
+  padding: 0.35em 0.75em;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--colour-primary);
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.bio-toggle:hover {
+  background: var(--colour-bg-soft);
+  border-color: var(--colour-primary);
+}
+
+.bio-toggle-icon {
+  font-size: 1.1em;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.bio-toggle[aria-expanded="true"] .bio-toggle-icon {
+  transform: rotate(45deg);
+}
+
 .team-card .bio {
   font-size: 0.95rem;
   margin: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.35s ease, margin 0.35s ease;
+}
+
+.team-card .bio.bio-hidden {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+}
+
+.team-card .bio.bio-visible {
+  max-height: 40rem;
+  opacity: 1;
+  margin-top: 0.75rem;
+}
+
+.team-card .bio p {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-card .bio {
+    transition: none;
+  }
+  .bio-toggle-icon {
+    transition: none;
+  }
 }
 
 /* --------------------------------------------------------------------------

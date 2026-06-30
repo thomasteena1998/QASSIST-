@@ -148,6 +148,25 @@
     }
   }
 
+  /* ----- Team bio toggle ----- */
+
+  var bioToggles = document.querySelectorAll(".bio-toggle");
+
+  bioToggles.forEach(function (btn) {
+    var bio = btn.nextElementSibling;
+    if (!bio || !bio.classList.contains("bio")) return;
+
+    bio.classList.add("bio-hidden");
+
+    btn.addEventListener("click", function () {
+      var expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", expanded ? "false" : "true");
+      btn.firstChild.textContent = expanded ? "View bio " : "Hide bio ";
+      bio.classList.toggle("bio-hidden", expanded);
+      bio.classList.toggle("bio-visible", !expanded);
+    });
+  });
+
   /* ----- Mobile menu toggle ----- */
 
   var menuToggle = document.querySelector(".menu-toggle");
