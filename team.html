@@ -53,40 +53,47 @@
     <h1>The Q-ASSIST team</h1>
 
     <ul class="team-grid">
-      <li class="team-card">
+      <li class="team-card" data-bio-index="0">
         <img src="assets/team-linda-biesty.jpg" alt="Linda Biesty">
         <div class="team-card-body">
           <h3>Dr. Linda Biesty</h3>
           <p class="role">Deputy Director Evidence Synthesis Ireland &amp; Cochrane Ireland</p>
-          <button class="bio-toggle" type="button" aria-expanded="false">View bio <span class="bio-toggle-icon" aria-hidden="true">+</span></button>
           <div class="bio">
             <p>Dr Linda Biesty is an Associate Professor in Midwifery at University of Galway, a midwife and qualitative researcher with over 20 years of experience weaving research into clinical practice across a range of health and social questions. She is Deputy Director of Evidence Synthesis Ireland, a Research Advisor with the Qualitative Research in Trials Centre (QUESTS), and a member of the Executive Management Committee of the HRB-Trials Methodology Research Network (HRB-TMRN). Her qualitative-in-trials methodology work spans the Encounter Study, the MERIT Project, and QUALShare, alongside qualitative evidence syntheses focused on trial recruitment and retention; all exploring how qualitative research can make trials more rigorous, relevant, and inclusive. That experience is exactly what she brings to leading Q-ASSIST.</p>
           </div>
         </div>
       </li>
-      <li class="team-card">
+      <li class="team-card" data-bio-index="1">
         <img src="assets/team-catherine-houghton.jpg" alt="Catherine Houghton">
         <div class="team-card-body">
           <h3>Dr. Catherine Houghton</h3>
           <p class="role">Associate Professor, School of Nursing, Midwifery and Evidence Science, University of Galway</p>
-          <button class="bio-toggle" type="button" aria-expanded="false">View bio <span class="bio-toggle-icon" aria-hidden="true">+</span></button>
           <div class="bio">
             <p>Catherine Houghton is Associate Professor in the School of Nursing, Midwifery and Evidence Science at the University of Galway. Catherine is a qualitative researcher with research focusing primarily qualitative evidence synthesis methodology, psychosocial research in dementia care and the integration of qualitative research within trials. Catherine is a research associate with Health Research Board-Trials Methodology Research Network (HRB-TMRN) and Evidence Synthesis Ireland supporting the development of rigorous, evidence-informed health research. Catherine is also a co-convenor of the Cochrane Qualitative Implementation Methods group.</p>
           </div>
         </div>
       </li>
-      <li class="team-card">
+      <li class="team-card" data-bio-index="2">
         <img src="assets/team-laura-jones.jpg" alt="Laura Jones">
         <div class="team-card-body">
           <h3>Dr. Laura Jones</h3>
           <p class="role">Professor of Qualitative and Mixed Methods Women&rsquo;s Health Research, University of Birmingham</p>
-          <button class="bio-toggle" type="button" aria-expanded="false">View bio <span class="bio-toggle-icon" aria-hidden="true">+</span></button>
           <div class="bio">
             <p>Laura Jones (she/her) is Professor of Qualitative and Mixed Methods Women&rsquo;s Health Research at the University of Birmingham. Her research uses qualitative and mixed methods to improve the design, delivery, and evaluation of inclusive health interventions and clinical trials, particularly in women&rsquo;s and maternal health. Within Q-ASSIST, Laura brings expertise in qualitative research, process evaluation, patient and stakeholder engagement, and inclusive trials methodology. Her work focuses on understanding and addressing barriers to participation for underserved groups, supporting meaningful involvement, and learning how trial processes can be adapted in practice to make research more accessible, relevant, and equitable.</p>
           </div>
         </div>
       </li>
     </ul>
+
+    <div class="team-popup-overlay" aria-hidden="true">
+      <div class="team-popup" role="dialog" aria-modal="true" aria-label="Team member bio">
+        <button class="team-popup-close" type="button" aria-label="Close">&times;</button>
+        <img class="team-popup-photo" src="" alt="">
+        <h3 class="team-popup-name"></h3>
+        <p class="team-popup-role"></p>
+        <div class="team-popup-bio"></div>
+      </div>
+    </div>
 
   </main>
 

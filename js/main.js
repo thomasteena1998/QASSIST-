@@ -148,24 +148,76 @@
     }
   }
 
-  /* ----- Team bio toggle ----- */
+  /* ----- Team bio popup ----- */
 
-  var bioToggles = document.querySelectorAll(".bio-toggle");
+  var overlay = document.querySelector(".team-popup-overlay");
+  var popup = overlay ? overlay.querySelector(".team-popup") : null;
+  var cards = document.querySelectorAll(".team-card[data-bio-index]");
 
-  bioToggles.forEach(function (btn) {
-    var bio = btn.nextElementSibling;
-    if (!bio || !bio.classList.contains("bio")) return;
+  if (overlay && popup && cards.length) {
+    document.body.classList.add("js-bio-popup");
 
-    bio.classList.add("bio-hidden");
+    var closeBtn = overlay.querySelector(".team-popup-close");
+    var popupPhoto = overlay.querySelector(".team-popup-photo");
+    var popupName = overlay.querySelector(".team-popup-name");
+    var popupRole = overlay.querySelector(".team-popup-role");
+    var popupBio = overlay.querySelector(".team-popup-bio");
+    var activeCard = null;
 
-    btn.addEventListener("click", function () {
-      var expanded = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", expanded ? "false" : "true");
-      btn.firstChild.textContent = expanded ? "View bio " : "Hide bio ";
-      bio.classList.toggle("bio-hidden", expanded);
-      bio.classList.toggle("bio-visible", !expanded);
+    function openPopup(card) {
+      var img = card.querySelector("img");
+      var name = card.querySelector("h3");
+      var role = card.querySelector(".role");
+      var bio = card.querySelector(".bio");
+      popupPhoto.src = img.src;
+      popupPhoto.alt = img.alt;
+      popupName.textContent = name.textContent;
+      popupRole.textContent = role.textContent;
+      popupBio.innerHTML = bio.innerHTML;
+      overlay.classList.add("open");
+      overlay.setAttribute("aria-hidden", "false");
+      activeCard = card;
+      closeBtn.focus();
+    }
+
+    function closePopup() {
+      overlay.classList.remove("open");
+      overlay.setAttribute("aria-hidden", "true");
+      if (activeCard) {
+        activeCard.focus();
+        activeCard = null;
+      }
+    }
+
+    cards.forEach(function (card) {
+      card.setAttribute("tabindex", "0");
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-label", card.querySelector("h3").textContent + " — view bio");
+
+      card.addEventListener("click", function () {
+        openPopup(card);
+      });
+
+      card.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openPopup(card);
+        }
+      });
     });
-  });
+
+    closeBtn.addEventListener("click", closePopup);
+
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) closePopup();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && overlay.classList.contains("open")) {
+        closePopup();
+      }
+    });
+  }
 
   /* ----- Mobile menu toggle ----- */
 
